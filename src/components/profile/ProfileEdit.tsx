@@ -1,5 +1,6 @@
 "use client";
 
+import { IProfileEdite } from "@/interfaces/profile";
 import { getProfileInfo } from "@/reduxSystem/slices/profile";
 import { DispatchType, StoreType } from "@/reduxSystem/store";
 import {
@@ -56,7 +57,7 @@ function ProfileEdit() {
     validationSchema: validationSchema,
   });
 
-  async function handelUpdate(values) {
+  async function handelUpdate(values: IProfileEdite) {
     try {
       await axios
         .put("https://ecommerce.routemisr.com/api/v1/users/updateMe", values, {
