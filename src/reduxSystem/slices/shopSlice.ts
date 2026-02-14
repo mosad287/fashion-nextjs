@@ -80,7 +80,9 @@ const shop = createSlice({
 
     builder.addCase(getShopProducts.rejected, (state, action) => {
       state.shopProductsLoading = false;
-      state.shopProductsError = action?.payload?.response.data.message;
+      state.shopProductsError =
+        (action.payload as any)?.response?.data?.message ||
+        "Something went wrong";
     });
 
     // product details
@@ -95,7 +97,9 @@ const shop = createSlice({
 
     builder.addCase(getProductDetails.rejected, (state, action) => {
       state.ProductDetailsLoading = false;
-      state.productDetailsError = action?.payload?.response.data.message;
+      state.productDetailsError =
+        (action.payload as any)?.response?.data?.message ||
+        "Something went wrong";
     });
   },
 });

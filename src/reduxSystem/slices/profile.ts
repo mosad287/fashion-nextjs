@@ -45,9 +45,8 @@ const profile = createSlice({
       state.profileLoading = false;
       state.profile = action.payload.data;
     });
-    builder.addCase(getProfileInfo.rejected, (state, action) => {
+    builder.addCase(getProfileInfo.rejected, (state) => {
       state.profileLoading = false;
-      state.productDetailsError = action?.payload?.response.data.message;
     });
   },
 });

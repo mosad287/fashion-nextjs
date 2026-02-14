@@ -58,7 +58,9 @@ function isFulfilld(
 ) {
   state.userLoading = false;
   state.userToken = action.payload.token;
-  localStorage.setItem("token", action.payload.token);
+  if (typeof window !== "undefined") {
+    localStorage.setItem("token", action.payload.token);
+  }
 }
 
 const auth = createSlice({
@@ -76,7 +78,9 @@ const auth = createSlice({
     });
     builder.addCase(userRegester.rejected, (state, action) => {
       state.userLoading = false;
-      state.userRegesterError = action?.payload?.response.data.message;
+      state.userRegesterError =
+        (action.payload as any)?.response?.data?.message ||
+        "Something went wrong";
     });
 
     // user login
@@ -89,7 +93,9 @@ const auth = createSlice({
     });
     builder.addCase(userLogin.rejected, (state, action) => {
       state.userLoading = false;
-      state.userLoginError = action?.payload?.response.data.message;
+      state.userLoginError =
+        (action.payload as any)?.response?.data?.message ||
+        "Something went wrong";
     });
   },
 });

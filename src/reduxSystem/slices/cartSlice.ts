@@ -175,7 +175,9 @@ const cart = createSlice({
     });
     builder.addCase(getUserCart.rejected, (state, action) => {
       state.userCartLoading = false;
-      state.userCartError = action?.payload?.response.data.message;
+      state.userCartError =
+        (action.payload as any)?.response?.data?.message ||
+        "Something went wrong";
     });
 
     // add product cart --------------------------------------------
@@ -188,7 +190,9 @@ const cart = createSlice({
     });
     builder.addCase(addCartProduct.rejected, (state, action) => {
       state.addProductCartLoading = false;
-      state.userCartError = action?.payload?.response.data.message;
+      state.userCartError =
+        (action.payload as any)?.response?.data?.message ||
+        "Something went wrong";
     });
 
     // update product cart --------------------------------------------
@@ -202,7 +206,9 @@ const cart = createSlice({
     });
     builder.addCase(updateCartProduct.rejected, (state, action) => {
       state.updateProductCartLoading = false;
-      state.userCartError = action?.payload?.response.data.message;
+      state.userCartError =
+        (action.payload as any)?.response?.data?.message ||
+        "Something went wrong";
     });
 
     // delete product cart --------------------------------------------
@@ -216,7 +222,9 @@ const cart = createSlice({
     });
     builder.addCase(deleteCartProduct.rejected, (state, action) => {
       state.deleteProductCartLoading = false;
-      state.userCartError = action?.payload?.response.data.message;
+      state.userCartError =
+        (action.payload as any)?.response?.data?.message ||
+        "Something went wrong";
     });
 
     // clear product cart --------------------------------------------
@@ -230,7 +238,9 @@ const cart = createSlice({
     });
     builder.addCase(clearCartProduct.rejected, (state, action) => {
       state.clearProductCartLoading = false;
-      state.userCartError = action?.payload?.response.data.message;
+      state.userCartError =
+        (action.payload as any)?.response?.data?.message ||
+        "Something went wrong";
     });
   },
 });
