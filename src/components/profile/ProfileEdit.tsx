@@ -66,8 +66,14 @@ function ProfileEdit() {
         .then(() => {
           router.push("/profile");
         });
-    } catch (error) {
-      setUserError(error.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        setUserError(error.response?.data?.message || "Axios error");
+      } else if (error instanceof Error) {
+        setUserError(error.message);
+      } else {
+        setUserError("Unknown error occurred");
+      }
     }
   }
 
