@@ -22,7 +22,7 @@ function AdminBrotect({ children }: { children: ReactNode }) {
     }
 
     setLoading(false);
-  }, []);
+  }, [router]);
 
   if (loading) return null;
 

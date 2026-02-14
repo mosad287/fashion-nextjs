@@ -3,9 +3,25 @@
 import { Button, TableCell, TableRow } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { ReactNode } from "react";
 
-function AdminTabelProduct({ product, price, index, rempveButton }) {
+interface AdminTabelProductProps {
+  product: {
+    id: string;
+    title: string;
+    imageCover: string;
+  };
+  price: ReactNode;
+  index: number;
+  rempveButton: ReactNode;
+}
+
+function AdminTabelProduct({
+  product,
+  price,
+  index,
+  rempveButton,
+}: AdminTabelProductProps) {
   const router = useRouter();
 
   return (

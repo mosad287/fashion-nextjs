@@ -36,7 +36,7 @@ function ProductDetails({ id }: Props) {
 
   useEffect(() => {
     dispatch(getProductDetails(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return (
     <Box>

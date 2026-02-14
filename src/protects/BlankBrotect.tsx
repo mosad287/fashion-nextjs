@@ -15,7 +15,7 @@ function BlankBrotect({ children }: { children: ReactNode }) {
     } else {
       setLoading(false);
     }
-  }, []);
+  }, [router]);
 
   if (loading) return null;
 
