@@ -1,5 +1,5 @@
 import { IUserLogin, IUserRegester } from "@/interfaces/user";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // function to user regester
@@ -38,14 +38,24 @@ export const userLogin = createAsyncThunk(
   },
 );
 
-const data = {
+interface AuthState {
+  userLoading: boolean;
+  userRegesterError: string;
+  userLoginError: string;
+  userToken: string;
+}
+
+const data: AuthState = {
   userLoading: false,
   userRegesterError: "",
   userLoginError: "",
   userToken: "",
 };
 
-function isFulfilld(state, action) {
+function isFulfilld(
+  state: AuthState,
+  action: PayloadAction<{ token: string }>,
+) {
   state.userLoading = false;
   state.userToken = action.payload.token;
   localStorage.setItem("token", action.payload.token);
