@@ -15,7 +15,7 @@ function Profile() {
 
   useEffect(() => {
     dispatch(getProfileInfo());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Box sx={{ px: { xs: 2, lg: 5, xl: 10 }, py: 7 }}>

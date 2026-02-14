@@ -38,7 +38,7 @@ function Shop() {
 
   useEffect(() => {
     dispatch(getShopProducts());
-  }, []);
+  }, [dispatch]);
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,

@@ -25,7 +25,7 @@ function Cart() {
 
   useEffect(() => {
     dispatch(getUserCart(localStorage.getItem("token")!));
-  }, []);
+  }, [dispatch]);
 
   const card = (
     <Fragment>

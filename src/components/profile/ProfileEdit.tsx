@@ -25,7 +25,7 @@ function ProfileEdit() {
 
   useEffect(() => {
     dispatch(getProfileInfo());
-  }, []);
+  }, [dispatch]);
 
   const [userError, setUserError] = useState("");
 

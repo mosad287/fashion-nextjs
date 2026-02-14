@@ -17,7 +17,7 @@ function Admin() {
 
   useEffect(() => {
     dispatch(getShopProducts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Box>

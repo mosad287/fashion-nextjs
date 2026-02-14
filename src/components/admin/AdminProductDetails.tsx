@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-function AdminProductDetails({ id }) {
+function AdminProductDetails({ id }: { id: string }) {
   const router = useRouter();
 
   const { ProductDetailsLoading, productDetails } = useSelector(
@@ -19,7 +19,7 @@ function AdminProductDetails({ id }) {
 
   useEffect(() => {
     dispatch(getProductDetails(id));
-  }, [id]);
+  }, [id, dispatch]);
 
   return (
     <Box

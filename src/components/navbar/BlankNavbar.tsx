@@ -77,7 +77,7 @@ function BlankNavbar() {
 
   useEffect(() => {
     dispatch(getUserCart(localStorage.getItem("token")!));
-  }, []);
+  }, [dispatch]);
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
