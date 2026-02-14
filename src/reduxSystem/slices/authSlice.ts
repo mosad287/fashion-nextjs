@@ -1,6 +1,7 @@
 import { IUserLogin, IUserRegester } from "@/interfaces/user";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { AxiosError } from "axios";
 
 // function to user regester
 export const userRegester = createAsyncThunk(
@@ -79,8 +80,8 @@ const auth = createSlice({
     builder.addCase(userRegester.rejected, (state, action) => {
       state.userLoading = false;
       state.userRegesterError =
-        (action.payload as any)?.response?.data?.message ||
-        "Something went wrong";
+        (action.payload as AxiosError<{ message: string }>)?.response?.data
+          ?.message || "Something went wrong";
     });
 
     // user login
@@ -94,8 +95,8 @@ const auth = createSlice({
     builder.addCase(userLogin.rejected, (state, action) => {
       state.userLoading = false;
       state.userLoginError =
-        (action.payload as any)?.response?.data?.message ||
-        "Something went wrong";
+        (action.payload as AxiosError<{ message: string }>)?.response?.data
+          ?.message || "Something went wrong";
     });
   },
 });

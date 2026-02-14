@@ -1,6 +1,6 @@
 import { ICartItem } from "@/interfaces/cartItem";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 // get cart items
 export const getUserCart = createAsyncThunk(
@@ -176,8 +176,8 @@ const cart = createSlice({
     builder.addCase(getUserCart.rejected, (state, action) => {
       state.userCartLoading = false;
       state.userCartError =
-        (action.payload as any)?.response?.data?.message ||
-        "Something went wrong";
+        (action.payload as AxiosError<{ message: string }>)?.response?.data
+          ?.message || "Something went wrong";
     });
 
     // add product cart --------------------------------------------
@@ -191,8 +191,8 @@ const cart = createSlice({
     builder.addCase(addCartProduct.rejected, (state, action) => {
       state.addProductCartLoading = false;
       state.userCartError =
-        (action.payload as any)?.response?.data?.message ||
-        "Something went wrong";
+        (action.payload as AxiosError<{ message: string }>)?.response?.data
+          ?.message || "Something went wrong";
     });
 
     // update product cart --------------------------------------------
@@ -207,8 +207,8 @@ const cart = createSlice({
     builder.addCase(updateCartProduct.rejected, (state, action) => {
       state.updateProductCartLoading = false;
       state.userCartError =
-        (action.payload as any)?.response?.data?.message ||
-        "Something went wrong";
+        (action.payload as AxiosError<{ message: string }>)?.response?.data
+          ?.message || "Something went wrong";
     });
 
     // delete product cart --------------------------------------------
@@ -223,15 +223,15 @@ const cart = createSlice({
     builder.addCase(deleteCartProduct.rejected, (state, action) => {
       state.deleteProductCartLoading = false;
       state.userCartError =
-        (action.payload as any)?.response?.data?.message ||
-        "Something went wrong";
+        (action.payload as AxiosError<{ message: string }>)?.response?.data
+          ?.message || "Something went wrong";
     });
 
     // clear product cart --------------------------------------------
     builder.addCase(clearCartProduct.pending, (state) => {
       state.clearProductCartLoading = true;
     });
-    builder.addCase(clearCartProduct.fulfilled, (state, action) => {
+    builder.addCase(clearCartProduct.fulfilled, (state) => {
       state.clearProductCartLoading = false;
       state.userCart = [];
       state.totalCartPrice = 0;
@@ -239,8 +239,8 @@ const cart = createSlice({
     builder.addCase(clearCartProduct.rejected, (state, action) => {
       state.clearProductCartLoading = false;
       state.userCartError =
-        (action.payload as any)?.response?.data?.message ||
-        "Something went wrong";
+        (action.payload as AxiosError<{ message: string }>)?.response?.data
+          ?.message || "Something went wrong";
     });
   },
 });

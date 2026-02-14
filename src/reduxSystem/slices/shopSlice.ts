@@ -1,7 +1,7 @@
 import { IProductDetails } from "@/interfaces/productDetails";
 import { IShopProduct } from "@/interfaces/shopProduct";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 // all product
 export const getShopProducts = createAsyncThunk(
@@ -81,8 +81,8 @@ const shop = createSlice({
     builder.addCase(getShopProducts.rejected, (state, action) => {
       state.shopProductsLoading = false;
       state.shopProductsError =
-        (action.payload as any)?.response?.data?.message ||
-        "Something went wrong";
+        (action.payload as AxiosError<{ message: string }>)?.response?.data
+          ?.message || "Something went wrong";
     });
 
     // product details
@@ -98,8 +98,8 @@ const shop = createSlice({
     builder.addCase(getProductDetails.rejected, (state, action) => {
       state.ProductDetailsLoading = false;
       state.productDetailsError =
-        (action.payload as any)?.response?.data?.message ||
-        "Something went wrong";
+        (action.payload as AxiosError<{ message: string }>)?.response?.data
+          ?.message || "Something went wrong";
     });
   },
 });
