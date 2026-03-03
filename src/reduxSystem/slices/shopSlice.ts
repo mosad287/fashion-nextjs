@@ -15,7 +15,7 @@ export const getShopProducts = createAsyncThunk(
         {
           headers: {
             token:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWY1M2EzNTJlOGUwY2EzZDFiNzU4NSIsIm5hbWUiOiJtb3NhZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzYzODM3MDkwLCJleHAiOjE3NzE2MTMwOTB9.x-oUL7_3O6hjrd_f7PEk_carT3GA988rkzuAQPhbLv8",
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWY1M2EzNTJlOGUwY2EzZDFiNzU4NSIsIm5hbWUiOiJtb3NhZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcyNTI4NzI1LCJleHAiOjE3ODAzMDQ3MjV9.upQMdlVJZdxP4rNMkTGydW16VBItmmTrCrgqpRWz-vg",
           },
         },
       );
